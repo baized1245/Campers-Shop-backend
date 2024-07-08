@@ -7,10 +7,17 @@ const createProductIntoDb = async (productData: TProduct) => {
   return result;
 };
 
+// Get all car from DB (public service)
+const getAllProductFromDB = async () => {
+  const result = await Product.find();
+
+  return result;
+};
+
 // exporting ProductService methods
 export const ProductService = {
   createProductIntoDb,
-  // getAllProductFromDB,
+  getAllProductFromDB,
   // getSingleProductFromDB,
   // deleteAProductFromDb,
   // updateAProductFromDB,
