@@ -49,11 +49,44 @@ const getSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
+//Update a product 
+const updateAProduct = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const updatedData = req.body;
+  const result = await ProductService.updateAProductFromDB(id, updatedData);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Product updated successfully!',
+    data: result,
+  });
+});
+
+//Delete car 
+const deleteAProduct = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await ProductService.deleteAProductFromDb(id);
+
+  if (!result || result === null) {
+    return res.status(404).json({
+      success: false,
+      messasge: 'Product not exist!',
+    });
+  }
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Product deleted successfully!',
+    data: result,
+  });
+});
+
 export const ProductControllers = {
   createProduct,
   getAllProduct,
   getSingleProduct,
-  // updateACar,
-  // deleteACar,
-  // returnACar,
+  updateAProduct,
+  deleteAProduct,
 };
