@@ -1,6 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { Model } from "mongoose";
 
+
+
+export type TLogin = {
+    email: string;
+    password: string;
+};
+
 export interface TUser {
     name: string;
     email: string;
