@@ -49,7 +49,7 @@ const getSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
-//Update a product 
+//Update a product
 const updateAProduct = catchAsync(async (req, res) => {
   const { id } = req.params;
   const updatedData = req.body;
@@ -58,12 +58,12 @@ const updateAProduct = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: 'Product updated successfully!',
+    message: "Product updated successfully!",
     data: result,
   });
 });
 
-//Delete car 
+//Delete car
 const deleteAProduct = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await ProductService.deleteAProductFromDb(id);
@@ -71,14 +71,14 @@ const deleteAProduct = catchAsync(async (req, res) => {
   if (!result || result === null) {
     return res.status(404).json({
       success: false,
-      messasge: 'Product not exist!',
+      messasge: "Product not exist!",
     });
   }
 
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: 'Product deleted successfully!',
+    message: "Product deleted successfully!",
     data: result,
   });
 });
